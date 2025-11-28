@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "prettier . --check && eslint",
+    "format": "prettier . --write"
   },
   "dependencies": {
     "@picocss/pico": "^2.1.1",

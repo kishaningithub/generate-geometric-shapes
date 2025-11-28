@@ -5,7 +5,8 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Generate geometric shapes",
-  description: "Generate precise shapes. Eg. regular polygons, triangle, rectangle etc",
+  description:
+    "Generate precise shapes. Eg. regular polygons, triangle, rectangle etc",
 };
 
 export default function RootLayout({
@@ -15,22 +16,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-        <body className="container">
+      <body className="container">
         <header>
-            <nav>
-                <ul>
-                    <li><strong>Generate geometric shapes</strong></li>
-                </ul>
-                <ul>
-                    <li><Link href="/regular-polygons">Regular polygons</Link></li>
-                    <li><Link href="/rectangle">Rectangle</Link></li>
-                </ul>
-            </nav>
+          <nav>
+            <ul>
+              <li>
+                <strong>Generate geometric shapes</strong>
+              </li>
+            </ul>
+            <ul>
+              <li>
+                <Link href="/regular-polygons">Regular polygons</Link>
+              </li>
+              <li>
+                <Link href="/rectangle">Rectangle</Link>
+              </li>
+            </ul>
+          </nav>
         </header>
-        <main>
-            {children}
-        </main>
-        </body>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
