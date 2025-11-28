@@ -76,8 +76,8 @@ export default function RectanglePage() {
         <Stage width={600} height={600}>
           <Layer>
             <Rect
-              x={300 - (width / 2)}
-              y={300 - (height / 2)}
+              x={300 - width / 2}
+              y={300 - height / 2}
               width={width}
               height={height}
               fill={fillColor}

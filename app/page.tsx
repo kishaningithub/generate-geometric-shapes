@@ -10,15 +10,15 @@ export default function Home() {
         <h2 className="text-center p-10">
           What shape would you like to generate?
         </h2>
-        <div role="group">
-          <Link href="/regular-polygons">
-            <span role="button">Regular polygons</span>
+        <div className="grid">
+          <Link href="/regular-polygons" role="button">
+            Regular polygons
           </Link>
-          <Link href="/rectangle">
-            <span role="button">Rectangle</span>
+          <Link href="/rectangle" role="button">
+            Rectangle
           </Link>
-          <Link href="/circle">
-            <span role="button">Circle</span>
+          <Link href="/circle" role="button">
+            Circle
           </Link>
         </div>
       </div>
