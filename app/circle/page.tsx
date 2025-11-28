@@ -4,7 +4,7 @@ import { Circle, Layer, Stage } from "react-konva";
 import { useState } from "react";
 
 export default function CirclePage() {
-  const [radius, setRadius] = useState(200);
+  const [radius, setRadius] = useState(150);
   const [strokeWidth, setStrokeWidth] = useState(0);
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
@@ -50,18 +50,20 @@ export default function CirclePage() {
           />
         </label>
       </div>
-      <Stage width={globalThis.innerWidth} height={globalThis.innerHeight}>
-        <Layer>
-          <Circle
-            x={globalThis.innerWidth / 2}
-            y={globalThis.innerHeight / 2}
-            radius={radius}
-            fill={fillColor}
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-          />
-        </Layer>
-      </Stage>
+      <div className="grid place-items-center h-full">
+        <Stage width={600} height={600}>
+          <Layer>
+            <Circle
+              x={300}
+              y={300}
+              radius={radius}
+              fill={fillColor}
+              stroke={strokeColor}
+              strokeWidth={strokeWidth}
+            />
+          </Layer>
+        </Stage>
+      </div>
     </div>
   );
 }

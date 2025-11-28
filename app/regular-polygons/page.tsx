@@ -72,20 +72,22 @@ export default function RegularPolygonPage() {
           />
         </label>
       </div>
-      <Stage width={globalThis.innerWidth} height={globalThis.innerHeight}>
-        <Layer>
-          <RegularPolygon
-            x={globalThis.innerWidth / 2}
-            y={globalThis.innerHeight / 2}
-            sides={noOfSides}
-            radius={radius}
-            fill={fillColor}
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-            rotation={angle}
-          />
-        </Layer>
-      </Stage>
+      <div className="grid place-items-center h-full">
+        <Stage width={600} height={600}>
+          <Layer>
+            <RegularPolygon
+              x={300}
+              y={300}
+              sides={noOfSides}
+              radius={radius}
+              fill={fillColor}
+              stroke={strokeColor}
+              strokeWidth={strokeWidth}
+              rotation={angle}
+            />
+          </Layer>
+        </Stage>
+      </div>
     </div>
   );
 }

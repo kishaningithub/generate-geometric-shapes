@@ -72,20 +72,22 @@ export default function RectanglePage() {
           />
         </label>
       </div>
-      <Stage width={globalThis.innerWidth} height={globalThis.innerHeight}>
-        <Layer>
-          <Rect
-            x={globalThis.innerWidth / 2}
-            y={globalThis.innerHeight / 2}
-            width={width}
-            height={height}
-            fill={fillColor}
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-            rotation={rotationAngle}
-          />
-        </Layer>
-      </Stage>
+      <div className="grid place-items-center h-full">
+        <Stage width={600} height={600}>
+          <Layer>
+            <Rect
+              x={300 - (width / 2)}
+              y={300 - (height / 2)}
+              width={width}
+              height={height}
+              fill={fillColor}
+              stroke={strokeColor}
+              strokeWidth={strokeWidth}
+              rotation={rotationAngle}
+            />
+          </Layer>
+        </Stage>
+      </div>
     </div>
   );
 }
