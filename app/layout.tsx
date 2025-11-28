@@ -31,6 +31,9 @@ export default function RootLayout({
               <li>
                 <Link href="/rectangle">Rectangle</Link>
               </li>
+              <li>
+                <Link href="/circle">Circle</Link>
+              </li>
             </ul>
           </nav>
         </header>

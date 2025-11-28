@@ -3,7 +3,7 @@
 import { Layer, Rect, Stage } from "react-konva";
 import { useState } from "react";
 
-export default function RegularPolygons() {
+export default function RectanglePage() {
   const [width, setWidth] = useState(200);
   const [height, setHeight] = useState(100);
   const [rotationAngle, setRotationAngle] = useState(0);

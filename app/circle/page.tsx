@@ -1,12 +1,11 @@
 "use client";
 
-import { Stage, Layer, RegularPolygon } from "react-konva";
+import { Circle, Layer, Stage } from "react-konva";
 import { useState } from "react";
 
-export default function RegularPolygonPage() {
-  const [noOfSides, setNoOfSides] = useState(5);
-  const [angle, setAngle] = useState(0);
-  const [radius, setRadius] = useState(100);
+export default function CirclePage() {
+  const [radius, setRadius] = useState(200);
+  const [rotationAngle, setRotationAngle] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(0);
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
@@ -15,12 +14,12 @@ export default function RegularPolygonPage() {
     <div>
       <div className="grid">
         <label>
-          No of sides
+          Radius
           <input
             type="number"
             min="3"
-            value={noOfSides}
-            onChange={(e) => setNoOfSides(Number(e.currentTarget.value))}
+            value={radius}
+            onChange={(e) => setRadius(Number(e.currentTarget.value))}
           />
         </label>
         <label>
@@ -29,10 +28,12 @@ export default function RegularPolygonPage() {
             type="number"
             min="-360"
             max="360"
-            value={angle}
-            onChange={(e) => setAngle(Number(e.currentTarget.value))}
+            value={rotationAngle}
+            onChange={(e) => setRotationAngle(Number(e.currentTarget.value))}
           />
         </label>
+      </div>
+      <div className="grid">
         <label>
           Stroke Width
           <input
@@ -43,8 +44,6 @@ export default function RegularPolygonPage() {
             onChange={(e) => setStrokeWidth(Number(e.currentTarget.value))}
           />
         </label>
-      </div>
-      <div className="grid">
         <label>
           Fill Color
           <input
@@ -61,28 +60,17 @@ export default function RegularPolygonPage() {
             onChange={(e) => setStrokeColor(e.currentTarget.value)}
           />
         </label>
-        <label>
-          Radius
-          <input
-            type="number"
-            min="10"
-            max="1000"
-            value={radius}
-            onChange={(e) => setRadius(Number(e.currentTarget.value))}
-          />
-        </label>
       </div>
       <Stage width={globalThis.innerWidth} height={globalThis.innerHeight}>
         <Layer>
-          <RegularPolygon
+          <Circle
             x={globalThis.innerWidth / 2}
             y={globalThis.innerHeight / 2}
-            sides={noOfSides}
             radius={radius}
             fill={fillColor}
             stroke={strokeColor}
             strokeWidth={strokeWidth}
-            rotation={angle}
+            rotation={rotationAngle}
           />
         </Layer>
       </Stage>
