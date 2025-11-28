@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import React from "react";
+import { ThemeProvider } from "next-themes";
 import Link from "next/link";
+import DarkModeToggleButton from "@/app/components/DarkModeToggleButton";
 
 export const metadata: Metadata = {
   title: "Generate geometric shapes",
@@ -15,29 +17,36 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="container">
-        <header>
-          <nav>
-            <ul>
-              <li>
-                <strong>Generate geometric shapes</strong>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <Link href="/regular-polygons">Regular polygons</Link>
-              </li>
-              <li>
-                <Link href="/rectangle">Rectangle</Link>
-              </li>
-              <li>
-                <Link href="/circle">Circle</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-        <main>{children}</main>
+        <ThemeProvider attribute="data-theme">
+          <header>
+            <nav>
+              <ul>
+                <li>
+                  <strong>
+                    <Link href="/">Generate geometric shapes</Link>
+                  </strong>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <Link href="/regular-polygons">Regular polygons</Link>
+                </li>
+                <li>
+                  <Link href="/rectangle">Rectangle</Link>
+                </li>
+                <li>
+                  <Link href="/circle">Circle</Link>
+                </li>
+                <li>
+                  <DarkModeToggleButton />
+                </li>
+              </ul>
+            </nav>
+          </header>
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
   );
