@@ -4,8 +4,8 @@ import { Layer, Rect, Stage } from "react-konva";
 import { useState } from "react";
 
 export default function RectanglePage() {
-  const [width, setWidth] = useState(200);
-  const [height, setHeight] = useState(100);
+  const [width, setWidth] = useState(300);
+  const [height, setHeight] = useState(200);
   const [rotationAngle, setRotationAngle] = useState(0);
   const [strokeWidth, setStrokeWidth] = useState(0);
   const [fillColor, setFillColor] = useState("#7bb2d2");

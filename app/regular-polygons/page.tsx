@@ -6,7 +6,7 @@ import { useState } from "react";
 export default function RegularPolygonPage() {
   const [noOfSides, setNoOfSides] = useState(5);
   const [angle, setAngle] = useState(0);
-  const [radius, setRadius] = useState(100);
+  const [radius, setRadius] = useState(120);
   const [strokeWidth, setStrokeWidth] = useState(0);
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");

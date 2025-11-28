@@ -4,7 +4,7 @@ import { Circle, Layer, Stage } from "react-konva";
 import { useState } from "react";
 
 export default function CirclePage() {
-  const [radius, setRadius] = useState(150);
+  const [radius, setRadius] = useState(120);
   const [strokeWidth, setStrokeWidth] = useState(0);
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
