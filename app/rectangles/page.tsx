@@ -1,6 +1,6 @@
 "use client";
 
-import { Layer, Rect, Stage, Group } from "react-konva";
+import { Layer, Rect, Stage } from "react-konva";
 import { useState } from "react";
 
 export default function RectanglePage() {

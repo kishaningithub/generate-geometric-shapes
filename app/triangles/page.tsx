@@ -1,9 +1,10 @@
 "use client";
 
-import { Group, Layer, Line, Stage } from "react-konva";
-import { useState } from "react";
+import { Layer, Line, Stage } from "react-konva";
+import { useRef, useState } from "react";
 import Point from "@/lib/geometry/Point";
 import { useForm } from "react-hook-form";
+import DownloadButton from "@/app/components/DownloadButton";
 
 function distance(p1: Point, p2: Point): number {
   const dx = p2.x - p1.x;
@@ -20,6 +21,7 @@ export default function TrianglesPage() {
     register,
     formState: { errors },
   } = useForm<TrianglesFormInput>({ mode: "onChange" });
+  const stageRef = useRef<typeof Stage>(null);
   const [sideA, setSideA] = useState(120);
   const [sideB, setSideB] = useState(120);
   const [angle, setAngle] = useState(60);
@@ -27,6 +29,9 @@ export default function TrianglesPage() {
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
+  function getDownloadDataUrl() {
+    return stageRef.current?.toDataURL();
+  }
 
   const startingPoint: Point = new Point(300 - sideA / 2, 300);
 
@@ -135,9 +140,17 @@ export default function TrianglesPage() {
           />
         </label>
       </div>
+      <div className="flex justify-end">
+        <DownloadButton getDownloadDataUrl={getDownloadDataUrl} />
+      </div>
       <div className="grid place-items-center h-full">
         {Object.keys(errors).length == 0 && (
-          <Stage width={600} height={600} rotation={rotationAngle}>
+          <Stage
+            width={600}
+            height={600}
+            rotation={rotationAngle}
+            ref={stageRef}
+          >
             <Layer>
               <Line
                 points={points}
