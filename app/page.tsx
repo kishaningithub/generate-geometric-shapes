@@ -14,11 +14,14 @@ export default function Home() {
           <Link href="/regular-polygons" role="button">
             Regular polygons
           </Link>
-          <Link href="/rectangle" role="button">
+          <Link href="/rectangles" role="button">
             Rectangle
           </Link>
-          <Link href="/circle" role="button">
+          <Link href="/circles" role="button">
             Circle
+          </Link>
+          <Link href="/triangles" role="button">
+            Triangles
           </Link>
         </div>
       </div>

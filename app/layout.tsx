@@ -8,7 +8,7 @@ import DarkModeToggleButton from "@/app/components/DarkModeToggleButton";
 export const metadata: Metadata = {
   title: "Generate geometric shapes",
   description:
-    "Generate precise shapes. Eg. regular polygons, triangle, rectangle etc",
+    "Generate precise shapes. Eg. regular polygons, triangles, rectangles etc",
 };
 
 export default function RootLayout({
@@ -34,10 +34,13 @@ export default function RootLayout({
                   <Link href="/regular-polygons">Regular polygons</Link>
                 </li>
                 <li>
-                  <Link href="/rectangle">Rectangle</Link>
+                  <Link href="/rectangles">Rectangle</Link>
                 </li>
                 <li>
-                  <Link href="/circle">Circle</Link>
+                  <Link href="/circles">Circle</Link>
+                </li>
+                <li>
+                  <Link href="/triangles">Triangles</Link>
                 </li>
                 <li>
                   <DarkModeToggleButton />

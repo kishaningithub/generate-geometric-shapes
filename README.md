@@ -4,8 +4,16 @@ This is a tool that you can use to create precise geometric shapes
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# To install all dependencies
+bun install
+
+# To start development server
 bun dev
+
+# To format the code
+bun format
+
+# To lint the code
+bun lint
 ```

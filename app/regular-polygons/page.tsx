@@ -5,11 +5,11 @@ import { useState } from "react";
 
 export default function RegularPolygonPage() {
   const [noOfSides, setNoOfSides] = useState(5);
-  const [angle, setAngle] = useState(0);
+  const [rotationAngle, setRotationAngle] = useState(0);
   const [radius, setRadius] = useState(120);
-  const [strokeWidth, setStrokeWidth] = useState(0);
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
+  const [strokeWidth, setStrokeWidth] = useState(0);
 
   return (
     <div>
@@ -29,18 +29,18 @@ export default function RegularPolygonPage() {
             type="number"
             min="-360"
             max="360"
-            value={angle}
-            onChange={(e) => setAngle(Number(e.currentTarget.value))}
+            value={rotationAngle}
+            onChange={(e) => setRotationAngle(Number(e.currentTarget.value))}
           />
         </label>
         <label>
-          Stroke Width
+          Radius
           <input
             type="number"
-            min="0"
-            max="100"
-            value={strokeWidth}
-            onChange={(e) => setStrokeWidth(Number(e.currentTarget.value))}
+            min="10"
+            max="1000"
+            value={radius}
+            onChange={(e) => setRadius(Number(e.currentTarget.value))}
           />
         </label>
       </div>
@@ -62,13 +62,13 @@ export default function RegularPolygonPage() {
           />
         </label>
         <label>
-          Radius
+          Stroke Width
           <input
             type="number"
-            min="10"
-            max="1000"
-            value={radius}
-            onChange={(e) => setRadius(Number(e.currentTarget.value))}
+            min="0"
+            max="100"
+            value={strokeWidth}
+            onChange={(e) => setStrokeWidth(Number(e.currentTarget.value))}
           />
         </label>
       </div>
@@ -83,7 +83,7 @@ export default function RegularPolygonPage() {
               fill={fillColor}
               stroke={strokeColor}
               strokeWidth={strokeWidth}
-              rotation={angle}
+              rotation={rotationAngle}
             />
           </Layer>
         </Stage>
