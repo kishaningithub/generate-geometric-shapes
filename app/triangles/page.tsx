@@ -102,7 +102,7 @@ export default function TrianglesPage() {
             type="number"
             min="1"
             value={sideC.toFixed(3)}
-            disabled={true}
+            readOnly={true}
           />
         </label>
       </div>
