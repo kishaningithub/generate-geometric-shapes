@@ -1,5 +1,6 @@
 import DownloadButton from "@/app/components/DownloadButton";
 import { Stage } from "react-konva";
+import Konva from "konva";
 import { Fragment, JSX, ReactNode, useRef } from "react";
 
 interface DownloadableStageProps {
@@ -11,10 +12,10 @@ interface DownloadableStageProps {
 export default function DownloadableStage(
   props: DownloadableStageProps,
 ): JSX.Element {
-  const stageRef = useRef<typeof Stage>(null);
+  const stageRef = useRef<Konva.Stage>(null);
 
   function getDownloadDataUrl() {
-    return stageRef.current?.toDataURL();
+    return stageRef.current?.toDataURL() || "";
   }
 
   return (
