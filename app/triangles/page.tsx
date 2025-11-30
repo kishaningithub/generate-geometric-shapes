@@ -30,7 +30,7 @@ export default function TrianglesPage() {
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
   const [drawAltitude, setDrawAltitude] = useState(false);
-  const [altitudeColor, setAltitudeColor] = useState("#1f6f8b");
+  const [altitudeColor, setAltitudeColor] = useState("#ff0000");
   const [altitudeWidth, setAltitudeWidth] = useState(1);
 
   const startingPoint: Point = new Point(300 - sideA / 2, 300);
