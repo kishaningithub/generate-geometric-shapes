@@ -29,6 +29,9 @@ export default function TrianglesPage() {
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
+  const [drawAltitude, setDrawAltitude] = useState(false);
+  const [altitudeColor, setAltitudeColor] = useState("#1f6f8b");
+  const [altitudeWidth, setAltitudeWidth] = useState(1);
 
   const startingPoint: Point = new Point(300 - sideA / 2, 300);
 
@@ -40,6 +43,7 @@ export default function TrianglesPage() {
       .addX(sideB * Math.cos(angleInRadians))
       .addY(sideB * Math.sin(angleInRadians)),
   ];
+  const altitudeLine = [lineB[1], lineB[1].setY(startingPoint.y)];
 
   const sideC = distance(lineA[0], lineB[1]);
 
@@ -107,6 +111,32 @@ export default function TrianglesPage() {
             readOnly={true}
           />
         </label>
+        <label>
+          Draw altitude
+          <input
+            type="checkbox"
+            role="switch"
+            checked={drawAltitude}
+            onChange={(e) => setDrawAltitude(e.currentTarget.checked)}
+          />
+        </label>
+        <label>
+          Altitude Color
+          <input
+            type="color"
+            value={altitudeColor}
+            onChange={(e) => setAltitudeColor(e.currentTarget.value)}
+          />
+        </label>
+        <label>
+          Altitude width
+          <input
+            type="number"
+            min="1"
+            value={altitudeWidth}
+            onChange={(e) => setAltitudeWidth(Number(e.currentTarget.value))}
+          />
+        </label>
       </div>
 
       <div className="grid">
@@ -147,6 +177,13 @@ export default function TrianglesPage() {
               strokeWidth={strokeWidth}
               closed
             />
+            {drawAltitude && (
+              <Line
+                points={altitudeLine.map((p) => p.toArray()).flat()}
+                stroke={altitudeColor}
+                strokeWidth={altitudeWidth}
+              />
+            )}
           </Layer>
         </DownloadableStage>
       )}
