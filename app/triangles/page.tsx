@@ -112,7 +112,7 @@ export default function TrianglesPage() {
           />
         </label>
         <label>
-          Draw altitude
+          <div>Draw altitude</div>
           <input
             type="checkbox"
             role="switch"
