@@ -1,7 +1,8 @@
 "use client";
 
-import { Layer, Rect, Stage } from "react-konva";
+import { Layer, Rect } from "react-konva";
 import { useState } from "react";
+import DownloadableStage from "../components/DownloadableStage";
 
 export default function RectanglePage() {
   const [width, setWidth] = useState(300);
@@ -72,24 +73,22 @@ export default function RectanglePage() {
           />
         </label>
       </div>
-      <div className="grid place-items-center h-full">
-        <Stage width={600} height={600}>
-          <Layer>
-            <Rect
-              x={300}
-              y={300}
-              offsetX={width / 2}
-              offsetY={height / 2}
-              width={width}
-              height={height}
-              fill={fillColor}
-              stroke={strokeColor}
-              strokeWidth={strokeWidth}
-              rotation={rotationAngle}
-            />
-          </Layer>
-        </Stage>
-      </div>
+      <DownloadableStage width={600} height={600}>
+        <Layer>
+          <Rect
+            x={300}
+            y={300}
+            offsetX={width / 2}
+            offsetY={height / 2}
+            width={width}
+            height={height}
+            fill={fillColor}
+            stroke={strokeColor}
+            strokeWidth={strokeWidth}
+            rotation={rotationAngle}
+          />
+        </Layer>
+      </DownloadableStage>
     </div>
   );
 }

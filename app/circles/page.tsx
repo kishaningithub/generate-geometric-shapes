@@ -1,7 +1,8 @@
 "use client";
 
-import { Circle, Layer, Stage } from "react-konva";
+import { Circle, Layer } from "react-konva";
 import { useState } from "react";
+import DownloadableStage from "@/app/components/DownloadableStage";
 
 export default function CirclePage() {
   const [radius, setRadius] = useState(120);
@@ -50,20 +51,18 @@ export default function CirclePage() {
           />
         </label>
       </div>
-      <div className="grid place-items-center h-full">
-        <Stage width={600} height={600}>
-          <Layer>
-            <Circle
-              x={300}
-              y={300}
-              radius={radius}
-              fill={fillColor}
-              stroke={strokeColor}
-              strokeWidth={strokeWidth}
-            />
-          </Layer>
-        </Stage>
-      </div>
+      <DownloadableStage width={600} height={600}>
+        <Layer>
+          <Circle
+            x={300}
+            y={300}
+            radius={radius}
+            fill={fillColor}
+            stroke={strokeColor}
+            strokeWidth={strokeWidth}
+          />
+        </Layer>
+      </DownloadableStage>
     </div>
   );
 }

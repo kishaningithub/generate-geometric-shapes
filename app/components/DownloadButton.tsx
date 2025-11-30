@@ -14,7 +14,7 @@ interface DownloadButtonProps {
 export default function DownloadButton(props: DownloadButtonProps) {
   const handleExport = () => {
     const uri = props.getDownloadDataUrl();
-    downloadURI(uri, "triangle.png");
+    downloadURI(uri, "download.png");
   };
 
   return <button onClick={handleExport}>Download</button>;

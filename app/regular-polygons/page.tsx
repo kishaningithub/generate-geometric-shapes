@@ -1,7 +1,8 @@
 "use client";
 
-import { Stage, Layer, RegularPolygon } from "react-konva";
+import { Layer, RegularPolygon } from "react-konva";
 import { useState } from "react";
+import DownloadableStage from "../components/DownloadableStage";
 
 export default function RegularPolygonPage() {
   const [noOfSides, setNoOfSides] = useState(5);
@@ -72,22 +73,20 @@ export default function RegularPolygonPage() {
           />
         </label>
       </div>
-      <div className="grid place-items-center h-full">
-        <Stage width={600} height={600}>
-          <Layer>
-            <RegularPolygon
-              x={300}
-              y={300}
-              sides={noOfSides}
-              radius={radius}
-              fill={fillColor}
-              stroke={strokeColor}
-              strokeWidth={strokeWidth}
-              rotation={rotationAngle}
-            />
-          </Layer>
-        </Stage>
-      </div>
+      <DownloadableStage width={600} height={600}>
+        <Layer>
+          <RegularPolygon
+            x={300}
+            y={300}
+            sides={noOfSides}
+            radius={radius}
+            fill={fillColor}
+            stroke={strokeColor}
+            strokeWidth={strokeWidth}
+            rotation={rotationAngle}
+          />
+        </Layer>
+      </DownloadableStage>
     </div>
   );
 }
