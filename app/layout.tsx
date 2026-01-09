@@ -43,7 +43,10 @@ export default function RootLayout({
                   <Link href="/triangles">Triangles</Link>
                 </li>
                 <li>
-                  <Link href="/trapizium">Trapizium</Link>
+                  <Link href="/trapizium">Trapezium</Link>
+                </li>
+                <li>
+                  <Link href="/kite">Kite</Link>
                 </li>
                 <li>
                   <DarkModeToggleButton />

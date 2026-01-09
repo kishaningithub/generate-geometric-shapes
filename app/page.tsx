@@ -20,11 +20,16 @@ export default function Home() {
           <Link href="/circles" role="button">
             Circle
           </Link>
+        </div>
+        <div className="grid pt-2">
           <Link href="/triangles" role="button">
             Triangles
           </Link>
           <Link href="/trapizium" role="button">
             Trapezium
+          </Link>
+          <Link href="/kite" role="button">
+            Kite
           </Link>
         </div>
       </div>
