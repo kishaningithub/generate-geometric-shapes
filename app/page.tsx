@@ -23,6 +23,9 @@ export default function Home() {
           <Link href="/triangles" role="button">
             Triangles
           </Link>
+          <Link href="/trapizium" role="button">
+            Trapezium
+          </Link>
         </div>
       </div>
     </div>

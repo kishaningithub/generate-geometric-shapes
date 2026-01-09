@@ -43,6 +43,9 @@ export default function RootLayout({
                   <Link href="/triangles">Triangles</Link>
                 </li>
                 <li>
+                  <Link href="/trapizium">Trapizium</Link>
+                </li>
+                <li>
                   <DarkModeToggleButton />
                 </li>
               </ul>
