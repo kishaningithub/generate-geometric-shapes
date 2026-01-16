@@ -1,10 +1,11 @@
 "use client";
 
-import { Layer, Line } from "react-konva";
-import { useState } from "react";
+import { Group, Layer, Line } from "react-konva";
+import { useRef, useState } from "react";
 import Point from "@/lib/geometry/Point";
 import { useForm } from "react-hook-form";
 import DownloadableStage from "@/app/components/DownloadableStage";
+import Konva from "konva";
 
 function distance(p1: Point, p2: Point): number {
   const dx = p2.x - p1.x;
@@ -32,6 +33,7 @@ export default function TrianglesPage() {
   const [drawAltitude, setDrawAltitude] = useState(false);
   const [altitudeColor, setAltitudeColor] = useState("#ff0000");
   const [altitudeWidth, setAltitudeWidth] = useState(1);
+  const downloadRef = useRef<Konva.Group>(null);
 
   const startingPoint: Point = new Point(300 - sideA / 2, 300);
 
@@ -168,22 +170,24 @@ export default function TrianglesPage() {
         </label>
       </div>
       {Object.keys(errors).length == 0 && (
-        <DownloadableStage width={600} height={600}>
+        <DownloadableStage width={600} height={600} downloadable={downloadRef}>
           <Layer>
-            <Line
-              points={points}
-              fill={fillColor}
-              stroke={strokeColor}
-              strokeWidth={strokeWidth}
-              closed
-            />
-            {drawAltitude && (
+            <Group ref={downloadRef}>
               <Line
-                points={altitudeLine.map((p) => p.toArray()).flat()}
-                stroke={altitudeColor}
-                strokeWidth={altitudeWidth}
+                points={points}
+                fill={fillColor}
+                stroke={strokeColor}
+                strokeWidth={strokeWidth}
+                closed
               />
-            )}
+              {drawAltitude && (
+                <Line
+                  points={altitudeLine.map((p) => p.toArray()).flat()}
+                  stroke={altitudeColor}
+                  strokeWidth={altitudeWidth}
+                />
+              )}
+            </Group>
           </Layer>
         </DownloadableStage>
       )}

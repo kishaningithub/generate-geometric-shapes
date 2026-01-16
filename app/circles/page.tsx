@@ -1,14 +1,16 @@
 "use client";
 
 import { Circle, Layer } from "react-konva";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DownloadableStage from "@/app/components/DownloadableStage";
+import Konva from "konva";
 
 export default function CirclePage() {
   const [radius, setRadius] = useState(120);
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
+  const downloadRef = useRef<Konva.Circle>(null);
 
   return (
     <div>
@@ -51,7 +53,7 @@ export default function CirclePage() {
           />
         </label>
       </div>
-      <DownloadableStage width={600} height={600}>
+      <DownloadableStage width={600} height={600} downloadable={downloadRef}>
         <Layer>
           <Circle
             x={300}
@@ -60,6 +62,7 @@ export default function CirclePage() {
             fill={fillColor}
             stroke={strokeColor}
             strokeWidth={strokeWidth}
+            ref={downloadRef}
           />
         </Layer>
       </DownloadableStage>

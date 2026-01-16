@@ -1,8 +1,9 @@
 "use client";
 
 import { Layer, Rect } from "react-konva";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DownloadableStage from "../components/DownloadableStage";
+import Konva from "konva";
 
 export default function RectanglePage() {
   const [width, setWidth] = useState(300);
@@ -11,6 +12,7 @@ export default function RectanglePage() {
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
+  const downloadRef = useRef<Konva.Rect>(null);
 
   return (
     <div>
@@ -73,7 +75,7 @@ export default function RectanglePage() {
           />
         </label>
       </div>
-      <DownloadableStage width={600} height={600}>
+      <DownloadableStage width={600} height={600} downloadable={downloadRef}>
         <Layer>
           <Rect
             x={300}
@@ -86,6 +88,7 @@ export default function RectanglePage() {
             stroke={strokeColor}
             strokeWidth={strokeWidth}
             rotation={rotationAngle}
+            ref={downloadRef}
           />
         </Layer>
       </DownloadableStage>

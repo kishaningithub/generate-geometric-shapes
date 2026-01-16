@@ -1,8 +1,9 @@
 "use client";
 
 import { Layer, Line } from "react-konva";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DownloadableStage from "@/app/components/DownloadableStage";
+import Konva from "konva";
 
 export default function TrapeziumPage() {
   const [topWidth, setTopWidth] = useState(120);
@@ -12,6 +13,7 @@ export default function TrapeziumPage() {
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
+  const downloadRef = useRef<Konva.Line>(null);
 
   const x = 300 - bottomWidth / 2;
   const y = 300 - height / 2;
@@ -95,13 +97,14 @@ export default function TrapeziumPage() {
           />
         </label>
       </div>
-      <DownloadableStage width={600} height={600}>
+      <DownloadableStage width={600} height={600} downloadable={downloadRef}>
         <Layer>
           <Line
             points={points}
             fill={fillColor}
             stroke={strokeColor}
             strokeWidth={strokeWidth}
+            ref={downloadRef}
             closed
           />
         </Layer>
