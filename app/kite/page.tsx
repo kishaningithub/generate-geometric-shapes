@@ -1,6 +1,6 @@
 "use client";
 
-import { Layer, Line } from "react-konva";
+import { Group, Layer, Line } from "react-konva";
 import { useRef, useState } from "react";
 import DownloadableStage from "@/app/components/DownloadableStage";
 import Konva from "konva";
@@ -11,10 +11,11 @@ export default function KitePage() {
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
+  const [rotationAngle, setRotationAngle] = useState(0);
   const downloadRef = useRef<Konva.Line>(null);
 
-  const x = 300 - verticalDiagonalLength / 2;
-  const y = 300 - horizontalDiagonalLength / 2;
+  const x = verticalDiagonalLength / 2;
+  const y = 0;
 
   const points = [
     [x, y], // top
@@ -48,6 +49,16 @@ export default function KitePage() {
             }
           />
         </label>
+        <label>
+          Rotate
+          <input
+            type="number"
+            min="-360"
+            max="360"
+            value={rotationAngle}
+            onChange={(e) => setRotationAngle(Number(e.currentTarget.value))}
+          />
+        </label>
       </div>
       <div className="grid">
         <label>
@@ -79,14 +90,22 @@ export default function KitePage() {
       </div>
       <DownloadableStage width={600} height={600} downloadable={downloadRef}>
         <Layer>
-          <Line
-            points={points}
-            fill={fillColor}
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
-            ref={downloadRef}
-            closed
-          />
+          <Group
+            x={300}
+            y={300}
+            offsetX={x}
+            offsetY={y + verticalDiagonalLength / 3}
+            rotation={rotationAngle}
+          >
+            <Line
+              points={points}
+              fill={fillColor}
+              stroke={strokeColor}
+              strokeWidth={strokeWidth}
+              ref={downloadRef}
+              closed
+            />
+          </Group>
         </Layer>
       </DownloadableStage>
     </div>
