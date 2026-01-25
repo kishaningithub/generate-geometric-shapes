@@ -31,24 +31,6 @@ export default function RootLayout({
               </ul>
               <ul>
                 <li>
-                  <Link href="/regular-polygons">Regular polygons</Link>
-                </li>
-                <li>
-                  <Link href="/rectangles">Rectangle</Link>
-                </li>
-                <li>
-                  <Link href="/circles">Circle</Link>
-                </li>
-                <li>
-                  <Link href="/triangles">Triangles</Link>
-                </li>
-                <li>
-                  <Link href="/trapizium">Trapezium</Link>
-                </li>
-                <li>
-                  <Link href="/kite">Kite</Link>
-                </li>
-                <li>
                   <DarkModeToggleButton />
                 </li>
               </ul>

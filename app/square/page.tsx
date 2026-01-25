@@ -7,8 +7,7 @@ import Konva from "konva";
 import SameSideMarker from "@/app/components/SameSideMarker";
 
 export default function RectanglePage() {
-  const [width, setWidth] = useState(300);
-  const [height, setHeight] = useState(200);
+  const [length, setLength] = useState(300);
   const [rotationAngle, setRotationAngle] = useState(0);
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
@@ -20,22 +19,12 @@ export default function RectanglePage() {
     <div>
       <div className="grid">
         <label>
-          Width
+          Length
           <input
             type="number"
             min="3"
-            value={width}
-            onChange={(e) => setWidth(Number(e.currentTarget.value))}
-          />
-        </label>
-        <label>
-          Height
-          <input
-            type="number"
-            min="10"
-            max="1000"
-            value={height}
-            onChange={(e) => setHeight(Number(e.currentTarget.value))}
+            value={length}
+            onChange={(e) => setLength(Number(e.currentTarget.value))}
           />
         </label>
         <label>
@@ -93,16 +82,16 @@ export default function RectanglePage() {
           <Group
             x={300}
             y={300}
-            offsetX={width / 2}
-            offsetY={height / 2}
-            width={width}
-            height={height}
+            offsetX={length / 2}
+            offsetY={length / 2}
+            width={length}
+            height={length}
             rotation={rotationAngle}
             ref={downloadRef}
           >
             <Rect
-              width={width}
-              height={height}
+              width={length}
+              height={length}
               fill={fillColor}
               stroke={strokeColor}
               strokeWidth={strokeWidth}
@@ -110,32 +99,30 @@ export default function RectanglePage() {
             <Group visible={sameSideMarker}>
               <SameSideMarker
                 strokeColor={strokeColor}
-                doubleLine={true}
                 line={[
                   [0, 0],
-                  [width, 0],
+                  [length, 0],
                 ].flat()}
               />
               <SameSideMarker
                 strokeColor={strokeColor}
-                doubleLine={true}
                 line={[
-                  [0, height],
-                  [width, height],
+                  [0, length],
+                  [length, length],
                 ].flat()}
               />
               <SameSideMarker
                 strokeColor={strokeColor}
                 line={[
                   [0, 0],
-                  [0, height],
+                  [0, length],
                 ].flat()}
               />
               <SameSideMarker
                 strokeColor={strokeColor}
                 line={[
-                  [width, 0],
-                  [width, height],
+                  [length, 0],
+                  [length, length],
                 ].flat()}
               />
             </Group>

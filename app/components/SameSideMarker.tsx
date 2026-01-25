@@ -11,7 +11,7 @@ interface SameSideMarkerProps {
 }
 
 export default function SameSideMarker(props: SameSideMarkerProps) {
-  const markerSize = props.markerSize || 6;
+  const markerSize = props.markerSize || 10;
   const doubleLine = props.doubleLine || false;
   const point1 = Point.fromArray(props.line.slice(0));
   const point2 = Point.fromArray(props.line.slice(2));
