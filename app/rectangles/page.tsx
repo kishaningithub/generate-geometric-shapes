@@ -4,6 +4,7 @@ import { Group, Layer, Line, Rect } from "react-konva";
 import { useRef, useState } from "react";
 import DownloadableStage from "../components/DownloadableStage";
 import Konva from "konva";
+import SameSideMarker from "@/app/components/SameSideMarker";
 
 export default function RectanglePage() {
   const [width, setWidth] = useState(300);
@@ -14,7 +15,6 @@ export default function RectanglePage() {
   const [strokeWidth, setStrokeWidth] = useState(0);
   const [sameSideMarker, setSameSideMarker] = useState(false);
   const downloadRef = useRef<Konva.Group>(null);
-  const sideMarkerSize = 6;
 
   return (
     <div>
@@ -108,53 +108,25 @@ export default function RectanglePage() {
               strokeWidth={strokeWidth}
             />
             <Group visible={sameSideMarker}>
-              <Line
-                points={[
-                  [width / 2, -sideMarkerSize],
-                  [width / 2, sideMarkerSize],
-                ].flat()}
-                stroke={strokeColor}
-                strokeWidth={1}
+              <SameSideMarker
+                strokeColor={strokeColor}
+                doubleLine={true}
+                rotation={90}
+                x={width / 2}
+                y={0}
               />
-              <Line
-                points={[
-                  [width / 2 + 3, -sideMarkerSize],
-                  [width / 2 + 3, sideMarkerSize],
-                ].flat()}
-                stroke={strokeColor}
-                strokeWidth={1}
+              <SameSideMarker
+                strokeColor={strokeColor}
+                doubleLine={true}
+                rotation={90}
+                x={width / 2}
+                y={height}
               />
-              <Line
-                points={[
-                  [width / 2, height - sideMarkerSize],
-                  [width / 2, height + sideMarkerSize],
-                ].flat()}
-                stroke={strokeColor}
-                strokeWidth={1}
-              />
-              <Line
-                points={[
-                  [width / 2 + 3, height - sideMarkerSize],
-                  [width / 2 + 3, height + sideMarkerSize],
-                ].flat()}
-                stroke={strokeColor}
-                strokeWidth={1}
-              />
-              <Line
-                points={[
-                  [-sideMarkerSize, height / 2],
-                  [sideMarkerSize, height / 2],
-                ].flat()}
-                stroke={strokeColor}
-                strokeWidth={1}
-              />
-              <Line
-                points={[
-                  [width - sideMarkerSize, height / 2],
-                  [width + sideMarkerSize, height / 2],
-                ].flat()}
-                stroke={strokeColor}
-                strokeWidth={1}
+              <SameSideMarker strokeColor={strokeColor} x={0} y={height / 2} />
+              <SameSideMarker
+                strokeColor={strokeColor}
+                x={width}
+                y={height / 2}
               />
             </Group>
           </Group>
