@@ -35,10 +35,13 @@ export default function TrianglesPage() {
   const [altitudeWidth, setAltitudeWidth] = useState(1);
   const downloadRef = useRef<Konva.Group>(null);
 
-  const startingPoint: Point = new Point(300 - sideA / 2, 300);
+  const angleInRadians = (-angle * Math.PI) / 180;
+  const altitude = Math.abs(Math.sin(angleInRadians) * sideB);
+
+  const startingPoint: Point = new Point(0, altitude);
 
   const lineA = [startingPoint.addX(sideA), startingPoint];
-  const angleInRadians = (-angle * Math.PI) / 180;
+
   const lineB = [
     startingPoint,
     startingPoint
@@ -172,7 +175,16 @@ export default function TrianglesPage() {
       {Object.keys(errors).length == 0 && (
         <DownloadableStage width={600} height={600} downloadable={downloadRef}>
           <Layer>
-            <Group ref={downloadRef}>
+            <Group
+              ref={downloadRef}
+              x={300}
+              y={300}
+              offsetX={sideA / 2}
+              offsetY={altitude / 2}
+              width={sideA}
+              height={altitude}
+              rotation={rotationAngle}
+            >
               <Line
                 points={points}
                 fill={fillColor}
