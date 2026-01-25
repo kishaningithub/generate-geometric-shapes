@@ -111,22 +111,32 @@ export default function RectanglePage() {
               <SameSideMarker
                 strokeColor={strokeColor}
                 doubleLine={true}
-                rotation={90}
-                x={width / 2}
-                y={0}
+                line={[
+                  [0, 0],
+                  [width, 0],
+                ].flat()}
               />
               <SameSideMarker
                 strokeColor={strokeColor}
                 doubleLine={true}
-                rotation={90}
-                x={width / 2}
-                y={height}
+                line={[
+                  [0, height],
+                  [width, height],
+                ].flat()}
               />
-              <SameSideMarker strokeColor={strokeColor} x={0} y={height / 2} />
               <SameSideMarker
                 strokeColor={strokeColor}
-                x={width}
-                y={height / 2}
+                line={[
+                  [0, 0],
+                  [0, height],
+                ].flat()}
+              />
+              <SameSideMarker
+                strokeColor={strokeColor}
+                line={[
+                  [width, 0],
+                  [width, height],
+                ].flat()}
               />
             </Group>
           </Group>

@@ -6,12 +6,7 @@ import Point from "@/lib/geometry/Point";
 import { useForm } from "react-hook-form";
 import DownloadableStage from "@/app/components/DownloadableStage";
 import Konva from "konva";
-
-function distance(p1: Point, p2: Point): number {
-  const dx = p2.x - p1.x;
-  const dy = p2.y - p1.y;
-  return Math.sqrt(dx * dx + dy * dy);
-}
+import { distance } from "@/lib/geometry/utils";
 
 interface TrianglesFormInput {
   angle: number;

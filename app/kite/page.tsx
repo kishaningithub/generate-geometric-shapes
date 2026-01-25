@@ -4,6 +4,9 @@ import { Group, Layer, Line } from "react-konva";
 import { useRef, useState } from "react";
 import DownloadableStage from "@/app/components/DownloadableStage";
 import Konva from "konva";
+import SameSideMarker from "@/app/components/SameSideMarker";
+import { getAngleInDegrees, midpoint } from "@/lib/geometry/utils";
+import Point from "@/lib/geometry/Point";
 
 export default function KitePage() {
   const [verticalDiagonalLength, setVerticalDiagonalLength] = useState(160);
@@ -16,13 +19,18 @@ export default function KitePage() {
 
   const x = verticalDiagonalLength / 2;
   const y = 0;
+  const top = [x, y];
+  const right = [
+    x + horizontalDiagonalLength / 2,
+    y + verticalDiagonalLength / 3,
+  ];
+  const bottom = [x, y + verticalDiagonalLength];
+  const left = [
+    x - horizontalDiagonalLength / 2,
+    y + verticalDiagonalLength / 3,
+  ];
 
-  const points = [
-    [x, y], // top
-    [x + horizontalDiagonalLength / 2, y + verticalDiagonalLength / 3], // right
-    [x, y + verticalDiagonalLength], // bottom
-    [x - horizontalDiagonalLength / 2, y + verticalDiagonalLength / 3], // left
-  ].flat();
+  const points = [top, right, bottom, left].flat();
 
   return (
     <div>
@@ -104,6 +112,24 @@ export default function KitePage() {
               strokeWidth={strokeWidth}
               ref={downloadRef}
               closed
+            />
+            <SameSideMarker
+              strokeColor={strokeColor}
+              line={[...left, ...top]}
+            />
+            <SameSideMarker
+              strokeColor={strokeColor}
+              line={[...top, ...right]}
+            />
+            <SameSideMarker
+              strokeColor={strokeColor}
+              doubleLine={true}
+              line={[...left, ...bottom]}
+            />
+            <SameSideMarker
+              strokeColor={strokeColor}
+              doubleLine={true}
+              line={[...bottom, ...right]}
             />
           </Group>
         </Layer>

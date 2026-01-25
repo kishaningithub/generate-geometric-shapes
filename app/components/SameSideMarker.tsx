@@ -1,19 +1,22 @@
 import { Group, Line } from "react-konva";
 import React from "react";
+import Point from "@/lib/geometry/Point";
+import { getAngleInDegrees, midpoint } from "@/lib/geometry/utils";
 
 interface SameSideMarkerProps {
-  markerSize?: number;
+  line: number[];
   strokeColor: string;
-  rotation?: number;
   doubleLine?: boolean;
-  x: number;
-  y: number;
+  markerSize?: number;
 }
 
 export default function SameSideMarker(props: SameSideMarkerProps) {
   const markerSize = props.markerSize || 6;
   const doubleLine = props.doubleLine || false;
-  const rotation = props.rotation || 0;
+  const point1 = Point.fromArray(props.line.slice(0));
+  const point2 = Point.fromArray(props.line.slice(2));
+  const midPoint = midpoint(point1, point2);
+  const rotation = getAngleInDegrees(point1, point2) + 90;
   const lineGap = 3;
   return (
     <React.Fragment>
@@ -21,8 +24,8 @@ export default function SameSideMarker(props: SameSideMarkerProps) {
         rotation={rotation}
         offsetX={markerSize / 2}
         offsetY={doubleLine ? lineGap / 2 : 0}
-        x={props.x}
-        y={props.y}
+        x={midPoint.x}
+        y={midPoint.y}
       >
         <Line
           points={[

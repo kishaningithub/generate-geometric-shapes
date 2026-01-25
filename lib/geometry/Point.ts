@@ -7,6 +7,10 @@ export default class Point {
     this.y = y;
   }
 
+  static fromArray(point: number[]): Point {
+    return new Point(point[0], point[1]);
+  }
+
   clone(): Point {
     return new Point(this.x, this.y);
   }
