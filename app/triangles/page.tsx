@@ -57,6 +57,9 @@ export default function TrianglesPage() {
     ...lineB.map((p) => p.toArray()).flat(),
   ];
 
+  const triangleWidth = Math.max(sideB, lineB[1].x);
+  const triangleHeight = altitude;
+
   return (
     <form>
       <div className="grid">
@@ -179,10 +182,10 @@ export default function TrianglesPage() {
               ref={downloadRef}
               x={300}
               y={300}
-              offsetX={sideA / 2}
-              offsetY={altitude / 2}
-              width={sideA}
-              height={altitude}
+              offsetX={triangleWidth / 2}
+              offsetY={triangleHeight / 2}
+              width={triangleWidth}
+              height={triangleHeight}
               rotation={rotationAngle}
             >
               <Line
