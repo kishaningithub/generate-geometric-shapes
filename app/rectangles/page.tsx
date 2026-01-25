@@ -1,6 +1,6 @@
 "use client";
 
-import { Layer, Rect } from "react-konva";
+import { Group, Layer, Line, Rect } from "react-konva";
 import { useRef, useState } from "react";
 import DownloadableStage from "../components/DownloadableStage";
 import Konva from "konva";
@@ -12,7 +12,9 @@ export default function RectanglePage() {
   const [fillColor, setFillColor] = useState("#7bb2d2");
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
-  const downloadRef = useRef<Konva.Rect>(null);
+  const [sameSideMarker, setSameSideMarker] = useState(false);
+  const downloadRef = useRef<Konva.Group>(null);
+  const sideMarkerSize = 6;
 
   return (
     <div>
@@ -49,6 +51,17 @@ export default function RectanglePage() {
       </div>
       <div className="grid">
         <label>
+          <input
+            type="checkbox"
+            role="switch"
+            checked={sameSideMarker}
+            onChange={(e) => setSameSideMarker(e.currentTarget.checked)}
+          />
+          Draw Side Marker
+        </label>
+      </div>
+      <div className="grid">
+        <label>
           Stroke Width
           <input
             type="number"
@@ -77,19 +90,74 @@ export default function RectanglePage() {
       </div>
       <DownloadableStage width={600} height={600} downloadable={downloadRef}>
         <Layer>
-          <Rect
+          <Group
             x={300}
             y={300}
             offsetX={width / 2}
             offsetY={height / 2}
             width={width}
             height={height}
-            fill={fillColor}
-            stroke={strokeColor}
-            strokeWidth={strokeWidth}
             rotation={rotationAngle}
             ref={downloadRef}
-          />
+          >
+            <Rect
+              width={width}
+              height={height}
+              fill={fillColor}
+              stroke={strokeColor}
+              strokeWidth={strokeWidth}
+            />
+            <Group visible={sameSideMarker}>
+              <Line
+                points={[
+                  [width / 2, -sideMarkerSize],
+                  [width / 2, sideMarkerSize],
+                ].flat()}
+                stroke={strokeColor}
+                strokeWidth={1}
+              />
+              <Line
+                points={[
+                  [width / 2 + 3, -sideMarkerSize],
+                  [width / 2 + 3, sideMarkerSize],
+                ].flat()}
+                stroke={strokeColor}
+                strokeWidth={1}
+              />
+              <Line
+                points={[
+                  [width / 2, height - sideMarkerSize],
+                  [width / 2, height + sideMarkerSize],
+                ].flat()}
+                stroke={strokeColor}
+                strokeWidth={1}
+              />
+              <Line
+                points={[
+                  [width / 2 + 3, height - sideMarkerSize],
+                  [width / 2 + 3, height + sideMarkerSize],
+                ].flat()}
+                stroke={strokeColor}
+                strokeWidth={1}
+              />
+              <Line
+                points={[
+                  [-sideMarkerSize, height / 2],
+                  [sideMarkerSize, height / 2],
+                ].flat()}
+                stroke={strokeColor}
+                strokeWidth={1}
+              />
+              <Line
+                points={[
+                  [width - sideMarkerSize, height / 2],
+                  [width + sideMarkerSize, height / 2],
+                ].flat()}
+                stroke={strokeColor}
+                strokeWidth={1}
+              />
+            </Group>
+          </Group>
         </Layer>
       </DownloadableStage>
     </div>
