@@ -5,8 +5,6 @@ import { useRef, useState } from "react";
 import DownloadableStage from "@/app/components/DownloadableStage";
 import Konva from "konva";
 import SameSideMarker from "@/app/components/SameSideMarker";
-import { getAngleInDegrees, midpoint } from "@/lib/geometry/utils";
-import Point from "@/lib/geometry/Point";
 
 export default function KitePage() {
   const [verticalDiagonalLength, setVerticalDiagonalLength] = useState(160);
@@ -15,6 +13,8 @@ export default function KitePage() {
   const [strokeColor, setStrokeColor] = useState("#1f6f8b");
   const [strokeWidth, setStrokeWidth] = useState(0);
   const [rotationAngle, setRotationAngle] = useState(0);
+  const [sameSideMarker, setSameSideMarker] = useState(false);
+
   const downloadRef = useRef<Konva.Line>(null);
 
   const x = verticalDiagonalLength / 2;
@@ -70,6 +70,17 @@ export default function KitePage() {
       </div>
       <div className="grid">
         <label>
+          <input
+            type="checkbox"
+            role="switch"
+            checked={sameSideMarker}
+            onChange={(e) => setSameSideMarker(e.currentTarget.checked)}
+          />
+          Draw Side Markers
+        </label>
+      </div>
+      <div className="grid">
+        <label>
           Stroke Width
           <input
             type="number"
@@ -113,24 +124,26 @@ export default function KitePage() {
               ref={downloadRef}
               closed
             />
-            <SameSideMarker
-              strokeColor={strokeColor}
-              line={[...left, ...top]}
-            />
-            <SameSideMarker
-              strokeColor={strokeColor}
-              line={[...top, ...right]}
-            />
-            <SameSideMarker
-              strokeColor={strokeColor}
-              doubleLine={true}
-              line={[...left, ...bottom]}
-            />
-            <SameSideMarker
-              strokeColor={strokeColor}
-              doubleLine={true}
-              line={[...bottom, ...right]}
-            />
+            <Group visible={sameSideMarker}>
+              <SameSideMarker
+                strokeColor={strokeColor}
+                line={[...left, ...top]}
+              />
+              <SameSideMarker
+                strokeColor={strokeColor}
+                line={[...top, ...right]}
+              />
+              <SameSideMarker
+                strokeColor={strokeColor}
+                doubleLine={true}
+                line={[...left, ...bottom]}
+              />
+              <SameSideMarker
+                strokeColor={strokeColor}
+                doubleLine={true}
+                line={[...bottom, ...right]}
+              />
+            </Group>
           </Group>
         </Layer>
       </DownloadableStage>

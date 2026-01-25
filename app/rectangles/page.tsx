@@ -1,7 +1,7 @@
 "use client";
 
-import { Group, Layer, Line, Rect } from "react-konva";
-import { useRef, useState } from "react";
+import {Group, Layer, Rect} from "react-konva";
+import {useRef, useState} from "react";
 import DownloadableStage from "../components/DownloadableStage";
 import Konva from "konva";
 import SameSideMarker from "@/app/components/SameSideMarker";
@@ -57,7 +57,7 @@ export default function RectanglePage() {
             checked={sameSideMarker}
             onChange={(e) => setSameSideMarker(e.currentTarget.checked)}
           />
-          Draw Side Marker
+          Draw Side Markers
         </label>
       </div>
       <div className="grid">
