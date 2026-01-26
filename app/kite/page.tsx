@@ -15,7 +15,7 @@ export default function KitePage() {
   const [rotationAngle, setRotationAngle] = useState(0);
   const [sameSideMarker, setSameSideMarker] = useState(false);
 
-  const downloadRef = useRef<Konva.Line>(null);
+  const downloadRef = useRef<Konva.Group>(null);
 
   const x = verticalDiagonalLength / 2;
   const y = 0;
@@ -115,13 +115,13 @@ export default function KitePage() {
             offsetX={x}
             offsetY={y + verticalDiagonalLength / 3}
             rotation={rotationAngle}
+            ref={downloadRef}
           >
             <Line
               points={points}
               fill={fillColor}
               stroke={strokeColor}
               strokeWidth={strokeWidth}
-              ref={downloadRef}
               closed
             />
             <Group visible={sameSideMarker}>
