@@ -2,6 +2,7 @@ import DownloadButton from "@/app/components/DownloadButton";
 import { Stage } from "react-konva";
 import Konva from "konva";
 import { Fragment, JSX, ReactNode, RefObject } from "react";
+import CopyToClipboardButton from "@/app/components/CopyToClipboardButton";
 
 interface DownloadableStageProps {
   width: number;
@@ -19,7 +20,8 @@ export default function DownloadableStage(
 
   return (
     <Fragment>
-      <div className="flex justify-end">
+      <div className="flex justify-end gap-2">
+        <CopyToClipboardButton getDownloadDataUrl={getDownloadDataUrl} />
         <DownloadButton getDownloadDataUrl={getDownloadDataUrl} />
       </div>
       <div className="grid place-items-center h-full">
